@@ -224,4 +224,143 @@ There are multiple features you need to make a prediction
 --> use pandas to clean up columsn and refit data 
 
 
+# Class 2 
+
+## Generalization 
+
+Ultimate goal for machine learning 
+Model's ability to give good outputs on inputs never seen before. 
+
+Overfitting 
+if you test the model on data usede to train it --> overfitting 
+you need a test set 
+
+Underfitting 
+the model does not perform well --> the model  or the algorithm are not complex enough, training mechanisms are poor 
+
+**How to build**: 
+- aquire dataset 
+- decide which model to use 
+- train the data --> choose the parameters to tweat == the polynomial 
+- test the model 
+
+- almost always, the more the datapoints, the better. 
+
+Building a model
+- start with x (a matrix)
+- y is the set of corresponding variables 
+- a particular y is the result for a particular x 
+
+Underfitting --> result of high bias,low variance --> assumption on how the data looks like, result is low variance = model is not very sensitive 
+
+Overfittitng --> low bias, the model is very sensitivie to the training data == high variance 
+
+All is about a tradeoff bewteen variance - bias 
+What is the right measure? 
+Depending on the model, something in the middle. --> ML is all about making a model able of generarilazion without ending in either of the 2. 
+Detecting wether the model suffers from either of this is responsability of the model 
+
+Overfitting: the major problem is overconfidence. 
+Underfitting: high bias brings lower confidence 
+
+**How to test a model**
+
+Split the data you have in training and testing sets. 
+Test set is always separate from the training set. 
+80/20 or 75/25
+- randomly select which elements are in the training / test set. 
+- shuffle the data too, before slinging the test set 
+
+fit the model on the training set 
+evaluate on the test set 
+
+use train_test_split 
+
+*About the test set* 
+- use the test set carefully, only for final evaluation 
+- do not use in selecting hyperparameters for the training 
+- you need a representative sample of cases: ordinary, edge cases... 
+
+**how do you know if model is overfit / underfit**
+
+- compare training score and test score 
+--> if trainign score is low, model is underfit 
+--> if trainining score is high and test score is very low, model is overfit
+
+--for underfitting: train for longer, use a more complex model 
+-- for overfitting: make the model simpler,get more data, use regularization (neural networks)
+
+**how to decide the complexity of a model**
+- start with simple models, so you can try different 
+- don't just pick the one that gives highest score, bc that can be wrong 
+- you need a mechanism to tets yout model. Use the test set? No, you would expose it to the model! 
+- use Hypher paramter tuning --> but do not use the test set. Use a third set of data. 
+
+**Hyperparameters** 
+
+They are chosen rather than learned. 
+- the degree of your mdoel (linear, quadratic, n-degree polynomial), which features to use in your model 
+- the learning rate alfa
+- the amount of regularization 
+- the number of layers / neurons in a neural network 
+
+**Polynomial curve fitting** 
+What is f(x) 
+- try polynomial degrees of M with weights --> is the line gonna be linear, cubic, quadratic... weights = coefficients, mx + c 
+- this is the hypthosis space 
+- w is vector 
+
+How do we measure success? 
+- measure of squared error
+- rms (root mean squared error)
+
+Among functions, chosose degree whcih minimizes error 
+- the degree of a polynomial is a hyperparameters
+- we need the degree that captures the trend of data best 
+
+**Which degree of polynomial** 
+with a polynomial 0 you get a straight line, bad 
+with a quadratic polynomial, the line is diagonal, still not good
+with a cubic polynomial, the line is pretty close to the trend 
+with a 9-polynomial, the model predicts the value perfectly, too well! it would not be able to generalize. Overfitting
+
+**RMS error**
+if you look at rms of all models, they show consistent performance across models except the one with 9degree polynomial --> overfitting with training data performing super well and test set performing super bad 
+
+**Selecting hyperparameters** 
+There are a lot of methods 
+- use feedback from **validation set** 
+
+**Validation set** 
+- split training data in training set and validation set (70/30)
+- train different models on the trainign set 
+- iterate through all the possible hyperparameters (eg polynomial m=1, m=2...)
+    - fix the hyperparameter, start with m=1
+    - train
+    - validate with validation set 
+    - store result of the hyperparameter
+    - repeat from step 1 with the next hyperparameters 
+- choose the model with the minimum error on the validation set 
+- (optional) retrain the model on the complete training data (training and validation set)
+
+**
+Hyperparameters are not trained, we choose them. 
+validation does not see the data directly, but it is still compromised. 
+It does not give an idea of the overall model performance, that's why you still need a test set. 
+
+**cross validation** 
+the validation set can introduce bias, if the validation set is not reprensentative (for example samples are not shuffled) 
+If you don't have enough data to have a validation set, you can do cross validation randomly generating the validation set each time and doing a number of runs. The select average of scores and select the model with the lowest error is these averages 
+
+It is slow, if you have a big model with a lot of paramteters 
+
+Types of cross-validation: 
+- leave out one cross va,udation 
+- k-fold 
+-. 
+
+k-fold: 
+you split the dataset inot k foldes 
+see slide 
+
 
