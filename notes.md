@@ -363,4 +363,53 @@ k-fold:
 you split the dataset inot k foldes 
 see slide 
 
+## Notebook 
+
+try with the cars dataset to use individual variables to train a model --> bad scores 
+
+if you use 2 variables instead of 1, better scores --> see model 4 in the ntoebook 
+
+Something not to do: 
+use the score of the test set to tweak the features of your model. 
+
+Use a validation set as middle step. --> use a cross validation score. 
+
+--> 5 numbers in the output bc of 5 slices 
+--> look at the avg of all scores to get your final score 
+
+use 3 features. 
+
+train the model 
+use validation score from the training data 
+--> once you are happy with the numbers, you go back and use those params to train the model 
+
+**polynomial regression**
+
+with a single feature. 
+
+use scikit-learn. USe polynomial features to transofr the data to use it to train the model. 
+x will be expaned to x, x2 etc. 
+then you fit the coefficitents in the polynomial. 
+
+the numbers need to be in a 2d array --> do a reshape. that will be your x. 
+
+first yout train with the polynomialfeatues expanding to the power of 2 (althought the data goes up to 5) 
+
+print scores for train data and test set. 
+train performs well, test is a bit lower. 
+explore what is the best hyperparamter to work better 
+change polynomial to 1, 2, 3, 4, 5 (up to the max) to see which one works best. --> for loop to expand data, train the model, get the scores, and compare them. 
+The best way to compare results is plotting a plot with the performance scores (skip 0 bc it's just gonna be a straight line) in test and training 
+
+the best is actuallt with the ploynomial 1 --> with the others training improves and test gets worse. 
+
+simple linear regression works the best 
+
+--> AGAIN we used the test set to choose the hyperparatmers. Bad. you need to use a validation score dfor that. Otherwise in this case the test set is already compromised. 
+
+
+
+
+
+
 
