@@ -407,6 +407,39 @@ simple linear regression works the best
 
 --> AGAIN we used the test set to choose the hyperparatmers. Bad. you need to use a validation score dfor that. Otherwise in this case the test set is already compromised. 
 
+# Class 3: Classification
+
+## video 1 
+outputs are not continuous but classes. 
+
+Evaluating performance --> only on the test set 
+
+Binary classification --> easiest form of classification 
+Some models can address multi-class 
+
+## video 2: logistic regression 
+
+It only outputs a value that is between 0 and 1 
+It's a classification model. The predicted value is a probability of something being true / false 
+
+0.7 is 70% probability of success --> you need to decide a treshold. 
+
+the equation y = w0 + w1x is likely to be < 0 and > 1 (the line / slope is long)
+we want an estimation of p between 0 and 1. probability < 0 is impossibility, and > 1 just does not exist. 
+
+Linear regression does not really work for logistic regression. The line is snot representative. 
+
+s-shaped curve is better, it's a bit different then the formula y = c+ mx. The sigmoid curve is gonna be close to 1 or 0 forever bt never touching. 
+
+**Sigmoid function** or **logisitic function** takes any real value number and maps to 0-1. 
+It is used for neural networks and deep learning. 
+How do we relate the linear regression function to the sigmoid curve? 
+
+At the end of the day, a line is not the best way to show classification results. 
+You need to pick a boundary / treshold and adjust FP/FN to that. 
+
+
+
 
 
 
