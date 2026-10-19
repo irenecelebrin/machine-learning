@@ -485,6 +485,59 @@ you can't fit a straight line in the future --> the problem of linear regression
 
 added notes in the notebnook. 
 
+# class 4
+
+## video 1: metrics 
+
+regression: mean squared error, r2, p-values, f-stats, aic/BIC 
+classificatin=on: ROC curve, lift chart, accuracy score, F1 score, recall / precision 
+
+**choosing a metric** -
+which metric do you use to determinance the significance of preedictors? 
+often it'sd a good idea to use multiple metrics instead of a single one. 
+
+**Classification metrics** 
+= how accurate predictions are to the test set --> accuracy score 
+
+accuracy_score(y_test, x_test) --> score only 
+or 
+model.score(X_test, y_test) --> predictions + score 
+
+called a harshs metric. does not tell how a classifier performs for particular classes. it just aggregates numbers. 
+what if you are interested in a specific class? how is the performance for a specific number? is it over-predicting classes? 
+
+**Prcision / Recall** is more sofisticated. 
+P: how many selected were . tp / tp + fp 
+R: how many correctw were found  tp  / tp + fn 
+
+classification_report(y_test. y_predicted) 
+provided P, R, F1: harmonic mean, accuracy score, by category  
+
+Depending on the problem, Precision or Recall might be more important. And then you wanan find a tradeoff, maybe improving one at the cost of reducing the other one. 
+
+**Accuracy revisited** 
+accuracy: tp + tn / tp + fp + tn + fn 
+used when true positives and true negatives are more importnat. 
+
+**F1-score**
+harmonic mean of precision and recall. Better when there are imbalances classes. it is always betweeb 0 and 1 
+
+f1 = 2 PR / P+R 
+
+extreme examples: 
+of women who do a mammogram only 10% are called back and only 0.5% has cancer. 
+my model can be 99.5% accurate AND still misdiagnose the women who have cancer. 
+look at the **confusion matrix** with actual and predicted values. you can use them to see the misclassifications
+
+How do you optmise these scores? 
+In general you use the metric to optimise a mode. sometimes it is not possible. 
+
+Our loss/cost function should reflect the problem we are solving and the training tecnique. then we hope it will create odels that do well on the dataset. 
+
+Trade offs: 
+- precision / recall often trade off against the other. 
+- varying the threasong in logistic regression will impact precision and recall. 
+
 
 
 
