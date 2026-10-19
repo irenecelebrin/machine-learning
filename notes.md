@@ -438,8 +438,52 @@ How do we relate the linear regression function to the sigmoid curve?
 At the end of the day, a line is not the best way to show classification results. 
 You need to pick a boundary / treshold and adjust FP/FN to that. 
 
+## video 3: Loss function and programming
 
+How to calculate loss function and how to use it to train your model. 
+how the training happens = how to minimize error 
 
+- figure out what weights minimize cost function (error)
+- mean squared error performs poorly on logistic regression. it ends up with a non-convex function with many local minumum (making it difficulat to find a global minimum)
+
+- you use **log loss function**. 
+the log of 1 is always 0. Everything raised to the power of 0 is 1. 
+
+2 separate equations: 
+- log of y if y =1 
+- log of y if y = 0
+both negatives 
+
+log (fw(x),y) = -y * log(fw*x) - (1-y) * log (1 - fw*x)
+
+this equation applies to only one item, not all samples. You need to generalize to all samples. 
+
+log (fw(x),y) = -y1 * log(fw*x1) - (1-y1) * log (1 - fw*x1)
+
+you consider and sum all sampples in the same equation. 
+understand what the sigma is about (i = 1, i < m). i is all the outputs in your dataset. 
+
+We neeed yo fnd the optimal paramteters to minimize loss (errro) o the trianing set. then we can use the model to predict more data. 
+
+**programming** 
+
+You can import logisitc regression from sklearn 
+penalty, defai;s is good. 
+maxiter: max number of iterations to fit the model. you verify on the validation set if you are overtraining. 
+
+outputs; model.coef_ (mx), model.incertept_ (c), model.score(x_test, y_test) score (accuract score of the model), y_pred = model.predict(X_test) predictions of y values. 
+
+model.classes -- the classes (0,1 or ternary 0,1,2, or names)
+
+model.predict_proba(X_test) pass x inpyuts and gives binary classification and binary probability. you wcan see how confixdetn the model is about its predictions (models tend to be overconfident!)
+
+predict can also be useful for performance metrics when you are making decisions about hyperparameters. 
+
+## video 4: notebook 
+
+you can't fit a straight line in the future --> the problem of linear regression. 
+
+added notes in the notebnook. 
 
 
 
