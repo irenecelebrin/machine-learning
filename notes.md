@@ -540,6 +540,85 @@ Trade offs:
 
 
 
+## video 2: k-nearest neighbours 
 
+ML model, 2 part algorightm 
+
+1. retrieve the most similar cases 
+2. comupte avergae of similar cases (regression) 
+or 
+2. take the max of k votes for ordinal type (classification) -- more often 
+
+**Classification** 
+Look for most similar instances to predict new cases. 
+
+Compute distance from target to every other instance/sample in the dataset. A lot of computation. So you calcukate what are the nearest neighbors. 
+Often they use Euclidian distance between all attributes of target and sample. 
+Scale matters --> if one predictor has a larger value, it will influece disproportionately the result, even when that feature is not that important. 
+
+**Formalizing everything** 
+you have training set 
+you have a target xj 
+calculate distance between xi, xj and select the k smallest ones 
+classify / approximate (regression) xj based on the k newarest xi you found 
+
+what if the prediction is made only based on the closest training point? Like in a scatter plot --> sometimes that's deceiving
+with k = 5 you look at 5 samples and can make a better guess 
+
+You can train your model with sklearn, test and evaluate. 
+
+**choosing k**
+you can end up overfitting (if too larfe) or underfitting (it too small) the model 
+
+any guess? cross-validation, experiment 
+use k-fold cross validation (another k)
+
+knn can create complicated boundary shapes. 
+
+**problem of dimensionaality** 
+instances descrived by 20 attrobites but only 2 are relevant to the target function --> this easily mis-leads the model 
+high dimensionality increases sparsity --> the more features, the further apart. 
+
+**morever**
+- what the model does is just storing values from training data, so it can use them to predict targets (lazy model)
+- storing every data is wasteful. better generalization models would not have to do it, 
+- quick to train (lazy model) but prediction is slow (when it needs to compute everything)
+
+Lazy vs easer learning methods 
+how models handle construction and prediction 
+- lazy defers the computration to when prediction is needed 
+- eager pre-computes a model during training, making prediction faster but requiriring more memory during training. (decision trees, support vector machines, neural networks)
+
+compare classifiers: gaussianNB vs knn
+knn has worse perf. 
+why? 
+big values mess up knn. Look at the params: mean radius mean is 14 vs worst concavity is 0.27 --> they affect the result very differently. and whe don't even know if any / both /either is relevant. 
+
+## video 3: feature engineering 
+
+maximise ffeatures / deal with them 
+
+1. feature scaling --> put them in the same order. 
+
+build data transformation ysing make_pipeline --> it will use a standard scaler 
+
+retrain and test data after using knn --> better score than both previous models. 
+
+2. Tranform data 
+pre-processing the dataset (it happens in the model) with a function transofrmer 
+in the model with make_pipelin you pass the function transformer (instead of the scaler) and use that data to train the model .
+
+
+the features have an enormous value on the model outcome. the components of each x are the features. 
+a combination of understanding data + model capabilities are a hige component to success 
+
+**using extra feature** 
+you can create an extra feature on top to help the model. 
+add_radius --> compututing euclidian sistance and adding that to the training data 
+
+boundaries are smoother --> model is doing better 
+
+**how to optimize features**
+you can also combine them --> instead of having 365 daily observations, use 12 monthly averages. 
 
 
