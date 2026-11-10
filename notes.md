@@ -544,8 +544,7 @@ Trade offs:
 
 ML model, 2 part algorightm 
 
-1. retrieve the most similar cases 
-2. comupte avergae of similar cases (regression) 
+1. retrieve the most similar cases and comupte avergae of similar cases (regression) 
 or 
 2. take the max of k votes for ordinal type (classification) -- more often 
 
@@ -584,9 +583,9 @@ high dimensionality increases sparsity --> the more features, the further apart.
 - storing every data is wasteful. better generalization models would not have to do it, 
 - quick to train (lazy model) but prediction is slow (when it needs to compute everything)
 
-Lazy vs easer learning methods 
+Lazy vs eager learning methods 
 how models handle construction and prediction 
-- lazy defers the computration to when prediction is needed 
+- lazy defers the computation to when prediction is needed 
 - eager pre-computes a model during training, making prediction faster but requiriring more memory during training. (decision trees, support vector machines, neural networks)
 
 compare classifiers: gaussianNB vs knn
@@ -608,11 +607,14 @@ retrain and test data after using knn --> better score than both previous models
 pre-processing the dataset (it happens in the model) with a function transofrmer 
 in the model with make_pipelin you pass the function transformer (instead of the scaler) and use that data to train the model .
 
+standardScaler (x - mean) / std. Range non è necessarfiamente 0 e 1 
+minMaxScaler il valore minimo diventa 0, max is 1 and the rest scaled accordingly 
 
 the features have an enormous value on the model outcome. the components of each x are the features. 
 a combination of understanding data + model capabilities are a hige component to success 
 
 **using extra feature** 
+functionTransformer 
 you can create an extra feature on top to help the model. 
 add_radius --> compututing euclidian sistance and adding that to the training data 
 
@@ -633,7 +635,7 @@ c in the intercept
 
 y = w0 + w1x
 
-the linea that minimizes error (predicted value vs actual value)
+the line that minimizes error (predicted value vs actual value)
 what is the error? also loss or residual 
 
 How do you select the weights to find the paramts to mimize error? 
@@ -646,7 +648,7 @@ formula of mean squared error (or loss)
 
 1/2m = normalized 
 sigm = polinomial, where i = 1 
-distance between the y data points, to the power of 2 
+distance between the y data points (actual vs predicted), to the power of 2 
 
 there might be variations, but the idea is the distance between what is predicted and what is there. 
 
@@ -704,7 +706,7 @@ chain rule gives the derivative of mean squared error.
 this method is what you use when you have few and simple params. 
 if you have a lot of params, you use **gradient descent** 
 
-w t+5 = wt - aDl(wt)
+w t+1 = wt - aDl(wt)
 
 aDL = derivative / differentiation of L with respect to w and multiple by learning rate a (how much you change params??)
 
@@ -723,7 +725,7 @@ you can compute the gradient.
 Waves: you can see the waves and colors. How do you find the biggest wave? follow the grandiett of the wave height surface. 
 
 **what is a slope** 
-in multiple dimensions, the gradient is the vector of the slpers. out weights have multiple dimensions. 
+in multiple dimensions, the gradient is the vector of the slopes. our weights have multiple dimensions. 
 
 with x and y, you know that wehen x changes of a certain amount, y changes --> you can calculate the grandient from this change. 
 Dl / Dw0 --> dervative of loss / derivative of weight 0 
